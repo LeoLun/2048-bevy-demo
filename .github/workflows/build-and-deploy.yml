@@ -59,8 +59,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build vue
-        run: npm run docs:vue
+      - name: Build demo
+        run: pnpm run build:demo
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
