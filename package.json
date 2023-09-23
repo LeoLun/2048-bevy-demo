@@ -1,0 +1,13 @@
+{
+  "name": "2048-bevy-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "pnpm -r test",
+    "build:bevy": "cd ./packages/2048 && wasm-pack build",
+    "build:demo": "cd ./packages/demo && pnpm run build"
+  },
+  "author": "",
+  "license": "ISC"
+}
