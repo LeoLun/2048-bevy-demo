@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import HellowWorld from './components/HelloWorld.vue'
+import WasmContainer from './components/WasmContainer.vue'
 
 </script>
 
 <template>
-  <HellowWorld></HellowWorld>
+  <WasmContainer></WasmContainer>
 </template>
 
 <style scoped>
