@@ -6,6 +6,7 @@
   "scripts": {
     "test": "pnpm -r test",
     "build:bevy": "cd ./packages/2048 && wasm-pack build && cd ./pkg && wasm-opt -Oz -o hello_wasm_bg.wasm hello_wasm_bg.wasm",
+    "build:plugin": "cd ./packages/vite-plugin-wasm && pnpm run build",
     "build:demo": "cd ./packages/demo && pnpm run build"
   },
   "author": "",

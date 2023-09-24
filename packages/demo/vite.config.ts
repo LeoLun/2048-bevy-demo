@@ -19,6 +19,6 @@ export default defineConfig({
           './WasmContainer': './src/components/WasmContainer.vue',
       },
       shared: ['vue']
-  })
+    })
   ],
 })
