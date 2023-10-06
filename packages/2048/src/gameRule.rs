@@ -1,5 +1,5 @@
 
-use bevy::log;
+// use bevy::log;
 use rand::Rng;
 use crate::config::*;
 
@@ -73,7 +73,7 @@ pub fn have_empty(save_value: &mut Vec<Vec<u32>>) -> bool {
 
 // 移动函数
 pub fn move_value(direction: MoveDirection, save_value: &mut CellValueSave) {
-	log::info!("move_value");
+	// log::info!("move_value");
 	// 判断是否要新生成 2或4 的flag
 	let mut is_move = false;
 

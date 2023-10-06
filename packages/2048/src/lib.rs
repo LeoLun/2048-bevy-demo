@@ -13,7 +13,7 @@ use wasm_bindgen::prelude::wasm_bindgen;
 use bevy::asset::HandleId;
 use bevy::prelude::*;
 
-use bevy::log;
+// use bevy::log;
 use bevy::window::PresentMode;
 
 // Tag component used to tag entities added on the game screen
@@ -48,12 +48,12 @@ pub fn run_bevy_app() {
 }
 
 fn setup(mut commands: Commands) {
-    log::info!("setup");
+    // log::info!("setup");
     commands.spawn(Camera2dBundle::default());
 }
 
 mod game {
-    use bevy::log;
+    // use bevy::log;
     use bevy::prelude::*;
     use bevy::sprite::MaterialMesh2dBundle;
     use bevy::text::Text2dBounds;
@@ -85,7 +85,7 @@ mod game {
         mut meshes: ResMut<Assets<Mesh>>,
         mut materials: ResMut<Assets<ColorMaterial>>,
     ) {
-        log::info!("game_setup");
+        // log::info!("game_setup");
         // 初始化存储数组
         let mut cell_value_save_temp: Vec<Vec<u32>> = init_cell_value_save();
         let mut cell_background_save: Vec<HandleId> = Vec::new();
@@ -105,7 +105,7 @@ mod game {
                 OnGameScreen,
             ))
             .with_children(|parent| {
-                log::info!("game_setup2");
+                // log::info!("game_setup2");
 
                 // // 初始化文字信息
                 let text_style = TextStyle {
@@ -180,7 +180,7 @@ mod game {
                         // Wrap text in the rectangle
                         size: box_size,
                     },
-                    transform: Transform::from_xyz(-WINDOW_WIDTH / 2.0, WINDOW_HEIGHT / 2.0, 0.0),
+                    transform: Transform::from_xyz(-WINDOW_WIDTH / 2.0, WINDOW_HEIGHT / 2.0 - 60.0, 0.0),
                     ..default()
                 });
             });
@@ -259,14 +259,15 @@ mod game {
                 let result = check_result(&mut cell_value_save);
                 match result {
                     VictoryOrDefeat::VICTORY => {
-                        log::info!("VICTORY");
+                        // log::info!("VICTORY");
                         next_state.set(VictoryOrDefeat::VICTORY);
                     }
                     VictoryOrDefeat::DEFEAT => {
-                        log::info!("DEFEAT");
+                        // log::info!("DEFEAT");
                         next_state.set(VictoryOrDefeat::DEFEAT);
                     }
-                    VictoryOrDefeat::NONE => log::info!("NONE"),
+                    VictoryOrDefeat::NONE => {},
+                    // VictoryOrDefeat::NONE => log::info!("NONE"),
                 }
             }
         }
@@ -274,7 +275,7 @@ mod game {
 }
 
 mod defeat {
-    use bevy::log;
+    // use bevy::log;
     use bevy::prelude::*;
     use super::{despawn_screen, CellValueSave, VictoryOrDefeat, COLOR_BROWN, WINDOW_HEIGHT};
 
@@ -309,7 +310,7 @@ mod defeat {
             let mut text = text_query.get_mut(children[0]).unwrap();
             match *interaction {
                 Interaction::Pressed => {
-                    log::info!("Pressed");
+                    // log::info!("Pressed");
                     next_state.set(VictoryOrDefeat::NONE);
                 }
                 Interaction::Hovered => {
@@ -323,7 +324,7 @@ mod defeat {
     }
 
     fn defeat_setup(mut commands: Commands, mut cell_value_save: ResMut<CellValueSave>) {
-        log::info!("defeat_function");
+        // log::info!("defeat_function");
         // // let font = asset_server.load("fonts/FiraSans-Bold.ttf");
         let text_style = TextStyle {
             font_size: WINDOW_HEIGHT / 5.0,

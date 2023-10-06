@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { nextTick } from 'vue'
 import * as wasm from "hello-wasm"
 
-onMounted(() => {
+nextTick(() => {
   try {
     wasm.run_bevy_app()
   } catch (error: any) {
@@ -10,14 +10,19 @@ onMounted(() => {
       throw error;
     }
   }
-
 })
+
+
+const handleKeydown = (event: KeyboardEvent) => {
+  event.stopPropagation();
+  event.preventDefault();
+}
 
 </script>
 
 <template>
   <div class="wasm-container">
-    <canvas id="bevy"></canvas>
+    <canvas id="bevy" @keydown="handleKeydown"></canvas>
   </div>
 </template>
 
