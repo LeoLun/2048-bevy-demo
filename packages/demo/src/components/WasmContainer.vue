@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { nextTick } from 'vue'
+import { onMounted } from 'vue'
 import * as wasm from "hello-wasm"
 
-nextTick(() => {
+onMounted(async () => {
   try {
     wasm.run_bevy_app()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     if (!error.message.startsWith("Using exceptions for control flow,")) {
       throw error;
